@@ -60,5 +60,6 @@ int main(void) {
     retired.rate_of_return = 0.01 / 12;
 
     retirement(start_age, initial_balance, working, retired);
-    
+
+    return 0;
 }
