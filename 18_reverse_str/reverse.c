@@ -5,8 +5,8 @@
 void reverse(char * str) {
   //WRITE ME!
   char c;
-  int l = strlen(str);
-  if (l > 0 && strchr(str, '\0')){
+  if (l > 0 && str != NULL){
+    int l = strlen(str);
     for (int i = 0; i < l / 2; i++) {
       c = str[i];
       str[i] = str[l - i - 1];
