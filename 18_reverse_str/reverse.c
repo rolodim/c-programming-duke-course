@@ -6,7 +6,7 @@ void reverse(char * str) {
   //WRITE ME!
   char c;
   int l = strlen(str);
-  if (str != NULL){
+  if (l > 0){
     for (int i = 0; i < l / 2; i++) {
       c = str[i];
       str[i] = str[l - i - 1];
