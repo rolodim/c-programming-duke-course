@@ -1,9 +1,20 @@
-Grading at Thu Mar 25 17:27:59 UTC 2021
+Grading at Thu Mar 25 17:29:13 UTC 2021
 Attempting to compile  reverse.c
-reverse.c: In function ‘reverse’:
-reverse.c:9:16: error: too few arguments to function ‘strchr’
-   if (l > 0 && strchr(str)){
-                ^
-The code did not compile!
+Your file matched the expected output
+Your output matched what we expected
+Removing your main() and replacing it with our own to run more tests...
+#################################################
+testcase2:
+ - Your program segfaulted.
+your code failed the testcase
+#################################################
+testcase3:
+Your file matched the expected output
+#################################################
+testcase4:
+Your file matched the expected output
+#################################################
+testcase5:
+Your file matched the expected output
 
-Overall Grade: F
+Overall Grade: C
