@@ -1,10 +1,18 @@
-Grading at Thu Mar 25 17:31:54 UTC 2021
+Grading at Thu Mar 25 17:32:58 UTC 2021
 Attempting to compile  reverse.c
-reverse.c: In function ‘reverse’:
-reverse.c:8:7: error: ‘l’ undeclared (first use in this function)
-   if (l > 0 && str != NULL){
-       ^
-reverse.c:8:7: note: each undeclared identifier is reported only once for each function it appears in
-The code did not compile!
+Your file matched the expected output
+Your output matched what we expected
+Removing your main() and replacing it with our own to run more tests...
+#################################################
+testcase2:
+nullptr#################################################
+testcase3:
+Your file matched the expected output
+#################################################
+testcase4:
+Your file matched the expected output
+#################################################
+testcase5:
+Your file matched the expected output
 
-Overall Grade: F
+Overall Grade: A
