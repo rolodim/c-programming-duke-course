@@ -4,7 +4,7 @@
 #include "deck.h"
 void print_hand(deck_t * hand){
   for (int i = 0; i < hand->n_cards; i++) {
-    print_card(*hand->cards[i]);
+    print_card(*(hand->cards[i]));
     printf(" ");
   }
 }
