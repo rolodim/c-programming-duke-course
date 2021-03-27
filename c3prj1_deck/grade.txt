@@ -1,9 +1,9 @@
-Grading at Sat Mar 27 00:43:35 UTC 2021
+Grading at Sat Mar 27 00:57:22 UTC 2021
 Compiling deck.c
 Compiling cards.c
 Linking cards.o deck.o deck-c4.o and the grader's .o file
 Checking the output of all the functions other than shuffle
-Line_3_did_not_match
+Line_7_did_not_match
 Your file did not match the expected ouput
  - Those functions seem to have problems
 Checking your shuffle results with a 6 card hand...
