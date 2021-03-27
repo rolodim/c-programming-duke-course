@@ -5,7 +5,7 @@
 
 
 void assert_card_valid(card_t c) {
-  printf("c = ", c.value);
+  printf("c = %d", c.value);
   assert(c.value >= 2);
   assert(c.value <= VALUE_ACE); // Checking value
   assert((c.suit >= SPADES && c.suit < NUM_SUITS)); // Checking suit
