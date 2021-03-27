@@ -5,9 +5,7 @@
 void print_hand(deck_t * hand){
   for (int i = 0; i < hand->n_cards; i++) {
     print_card(*(hand->cards[i]));
-    //if (i < hand->n_cards - 1) {
-      printf(" ");
-      //}
+    printf(" ");
   }
 }
 
@@ -39,10 +37,6 @@ void assert_full_deck(deck_t * d) {
 	count++;
       }
     }
-    if (count != 1) {
-      assert(0);
-    }
+    assert(count == 1);
   }
-  
-    
 }
