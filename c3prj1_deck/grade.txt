@@ -1,4 +1,4 @@
-Grading at Sat Mar 27 12:51:42 UTC 2021
+Grading at Sat Mar 27 13:18:17 UTC 2021
 Compiling deck.c
 Compiling cards.c
 Linking cards.o deck.o deck-c4.o and the grader's .o file
@@ -9,6 +9,7 @@ Line_5_did_not_match
 Line_7_did_not_match
 Line_8_did_not_match
 Line_9_did_not_match
+Line_10_did_not_match
 Line_12_did_not_match
 Line_13_did_not_match
 Line_14_did_not_match
