@@ -66,6 +66,7 @@ card_t value_from_letter(char value) {
   case '0': card.value = 10; break;
   default: card.value = value - '0'; break;
   }
+  assert_card_valid(card);
   return card;
 }
 
@@ -85,7 +86,7 @@ card_t card_from_letters(char value_let, char suit_let) {
   card_t temp;
   temp = value_from_letter(value_let);
   temp = suit_from_letter(suit_let);
-  assert_card_valid(temp);
+  //assert_card_valid(temp);
   return temp;
 }
 
