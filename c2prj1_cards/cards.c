@@ -5,6 +5,7 @@
 
 
 void assert_card_valid(card_t c) {
+  printf("c = ", c.value);
   assert(c.value >= 2);
   assert(c.value <= VALUE_ACE); // Checking value
   assert((c.suit >= SPADES && c.suit < NUM_SUITS)); // Checking suit
@@ -86,7 +87,7 @@ card_t card_from_letters(char value_let, char suit_let) {
   card_t temp;
   temp = value_from_letter(value_let);
   temp = suit_from_letter(suit_let);
-  //assert_card_valid(temp);
+  assert_card_valid(temp);
   return temp;
 }
 
