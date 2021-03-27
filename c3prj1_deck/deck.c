@@ -22,11 +22,12 @@ int deck_contains(deck_t * d, card_t c) {
 
 void shuffle(deck_t * d){
   card_t temp;
+  int r;
   for (int i = 0; i < d->n_cards; i++) {
-    int r1 = random() % d->n_cards;
+    r = random() % d->n_cards;
     temp = *(d->cards)[i];
-    *(d->cards)[i] = *(d->cards)[r1];
-    *(d->cards)[r1] = temp;
+    *(d->cards)[i] = *(d->cards)[r];
+    *(d->cards)[r] = temp;
   }
 }
 
