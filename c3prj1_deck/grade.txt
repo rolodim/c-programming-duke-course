@@ -1,11 +1,16 @@
-Grading at Sat Mar 27 11:40:10 UTC 2021
+Grading at Sat Mar 27 11:41:10 UTC 2021
 Compiling deck.c
 Compiling cards.c
-cards.c: In function ‘assert_card_valid’:
-cards.c:8:10: error: too many arguments for format [-Werror=format-extra-args]
-   printf("c = ", c.value);
-          ^
-cc1: all warnings being treated as errors
-Could not compile your cards.c!
+Linking cards.o deck.o deck-c4.o and the grader's .o file
+Checking the output of all the functions other than shuffle
+Line_3_did_not_match
+Your file did not match the expected ouput
+ - Those functions seem to have problems
+Checking your shuffle results with a 6 card hand...
+  Least common hand: %
+  Most  common hand: %
+  Perfectly even is: 0.138888%
+ That doesn't seem terribly uniform.
+ Try to improve your shuffling algorithm and re-grade
 
-Overall Grade: FAILED
+Overall Grade: F
