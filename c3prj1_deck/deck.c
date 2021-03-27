@@ -5,9 +5,9 @@
 void print_hand(deck_t * hand){
   for (int i = 0; i < hand->n_cards; i++) {
     print_card(*(hand->cards[i]));
-    if (i < hand->n_cards - 1) {
+    //if (i < hand->n_cards - 1) {
       printf(" ");
-    }
+      //}
   }
 }
 
@@ -23,7 +23,7 @@ int deck_contains(deck_t * d, card_t c) {
 void shuffle(deck_t * d){
   card_t temp;
   int r;
-  for (int i = 0; i < d->n_cards; i++) {
+  for (int i = 0; i < d->n_cards / 4; i++) {
     r = random() % d->n_cards;
     temp = *(d->cards)[i];
     *(d->cards)[i] = *(d->cards)[r];
