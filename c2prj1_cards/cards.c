@@ -44,21 +44,22 @@ char value_letter(card_t c) {
 }
 
 char suit_letter(card_t c) {
+  char r;
   switch (c.suit) {
-  case SPADES: return 's';
-  case HEARTS: return 'h';
-  case DIAMONDS: return 'd';
-  case CLUBS: return 'c';
-  default: return 'e';
+  case SPADES: r = 's'; break;
+  case HEARTS: r = 'h'; break;
+  case DIAMONDS: r = 'd'; break;
+  case CLUBS: r = 'c'; break;
+  default: r = 'e';break;
   }
+  return r;
 }
 
 void print_card(card_t c) {
   printf("%c%c", value_letter(c), suit_letter(c));
 }
 
-card_t value_from_letter(char value) {
-  card_t card;
+card_t value_from_letter(char value, card_t card) {
   switch (value) {
   case 'J': card.value = VALUE_JACK; break;
   case 'Q': card.value = VALUE_QUEEN; break;
@@ -67,12 +68,10 @@ card_t value_from_letter(char value) {
   case '0': card.value = 10; break;
   default: card.value = value - '0'; break;
   }
-  assert_card_valid(card);
   return card;
 }
 
-card_t suit_from_letter(char suit) {
-  card_t card;
+card_t suit_from_letter(char suit, card_t card) {
   switch (suit) {
   case 's': card.suit = SPADES; break;
   case 'h': card.suit = HEARTS; break;
@@ -84,11 +83,11 @@ card_t suit_from_letter(char suit) {
 }
 
 card_t card_from_letters(char value_let, char suit_let) {
-  card_t temp;
-  temp = value_from_letter(value_let);
-  temp = suit_from_letter(suit_let);
-  assert_card_valid(temp);
-  return temp;
+  card_t card = { 0 };
+  card = value_from_letter(value_let, card);
+  card = suit_from_letter(suit_let, card);
+  assert_card_valid(card);
+  return card;
 }
 
 card_t card_from_num(unsigned c) {
