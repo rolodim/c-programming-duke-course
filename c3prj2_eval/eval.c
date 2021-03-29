@@ -4,30 +4,119 @@
 #include <assert.h>
 
 int card_ptr_comp(const void * vp1, const void * vp2) {
-  return 0;
+  const card_t * const * cp1 = vp1;
+  const card_t * const * cp2 = vp2;
+  unsigned val1 = (**cp1).value;
+  unsigned val2 = (**cp2).value;
+  suit_t suit1 = (**cp1).suit;
+  suit_t suit2 = (**cp2).suit;
+  if (val1 == val2) {
+    if (suit1 == suit2) {
+      return 0;
+    }
+    else {
+    return suit2 - suit1;
+    }
+  }
+  else {
+    return val2 - val1;
+  } 
 }
 
 suit_t flush_suit(deck_t * hand) {
+  size_t tableSuit[4][2] = {{SPADES , 0}, {HEARTS, 0}, {DIAMONDS, 0}, {CLUBS, 0}};
+  for (int c = 0; c < hand->n_cards; c++) {
+    for (int s = 0; s < NUM_SUITS; s++) {
+      if (hand->cards[c]->suit == tableSuit[s][0]) {
+	tableSuit[s][1]++;
+	if (tableSuit[s][1] == 5) {
+	  return tableSuit[s][0];
+	}
+      }
+    }
+  }
   return NUM_SUITS;
 }
 
 unsigned get_largest_element(unsigned * arr, size_t n) {
-  return 0;
+  unsigned max = arr[0];
+  for (int i = 0; i < n; i++) {
+    if (arr[i] > max) {
+      max = arr[i];
+    }
+  }
+  assert(max > 0);
+  return max;
 }
 
 size_t get_match_index(unsigned * match_counts, size_t n,unsigned n_of_akind){
-
-  return 0;
+  for (int i = 0; i < n; i++) {
+    if (match_counts[i] == n_of_akind) {
+      return i;
+    }
+  }  
+  assert(0);
 }
+
 ssize_t  find_secondary_pair(deck_t * hand,
 			     unsigned * match_counts,
 			     size_t match_idx) {
+  for (int c = 0; c < hand->n_cards; c++) {
+    if (match_counts[c] > 1 && hand->cards[c]->value != hand->cards[match_idx]->value) {
+      return c;
+    }
+  }
   return -1;
 }
 
-int is_straight_at(deck_t * hand, size_t index, suit_t fs) {
+
+int is_straight_at_helper(deck_t * hand, size_t index, suit_t fs, int n) { //Finds n cards with decreasing value. I can use reccursion here
+  int count = 1;
+  card_t c1;
+  card_t c2;
+  for (int c = index; c < hand->n_cards - 1; c++) {
+    c1 = * hand->cards[c];
+    c2 = * hand->cards[c+1];
+    if (c1.value != c2.value) {
+      if ((fs == c1.suit && c1.suit == c2.suit) || fs == NUM_SUITS) {
+	if (c1.value - c2.value == 1) {
+	  count++;
+	}
+	else {
+	  return 0;
+	}
+      }
+    }
+  }
+  if (count >= n) {
+    return 1;
+  }
   return 0;
 }
+
+int is_ace_straight_at(deck_t * hand, size_t index, suit_t fs) { // Finds either Ace-low or Ace-high straight
+  if (!is_straight_at_helper(hand, index, fs, 5)) {
+    int n = 4;
+    for (int j = index; j < hand->n_cards; j++) {
+      if (hand->cards[j]-> value == 5) {
+	if (fs == hand->cards[index]->suit || fs == NUM_SUITS) {
+	 return is_straight_at_helper(hand, j, fs, n) * -1;
+	}
+      }
+    }
+    return 0;
+  }
+  return 1;
+}
+    
+
+int is_straight_at(deck_t * hand, size_t index, suit_t fs) {
+  if (hand->cards[index]->value == VALUE_ACE) {
+    return is_ace_straight_at(hand, index, fs);
+  }
+  return is_straight_at_helper(hand, index, fs, 5);
+}
+
 
 hand_eval_t build_hand_from_match(deck_t * hand,
 				  unsigned n,
@@ -35,15 +124,45 @@ hand_eval_t build_hand_from_match(deck_t * hand,
 				  size_t idx) {
 
   hand_eval_t ans;
+  ans.ranking = what;
+  int i = 0;
+  for (size_t c = 0; c < 5; c++) {
+   if (c < n) {
+     ans.cards[c] = hand->cards[c+idx];
+   }
+   else {
+     while (hand->cards[i]->value == hand->cards[idx]->value && n != 0) {
+       i++;
+     }
+     ans.cards[c] = hand->cards[i];
+     i++;
+   }
+  }
   return ans;
+}
+
+void sortCardHand(deck_t * hand, size_t n) {
+  qsort(hand->cards, n, sizeof(hand->cards[0]), card_ptr_comp);
 }
 
 
 int compare_hands(deck_t * hand1, deck_t * hand2) {
-
-  return 0;
+  sortCardHand(hand1, hand1->n_cards);
+  sortCardHand(hand2, hand2->n_cards);
+  hand_eval_t h_eval1 = evaluate_hand(hand1);
+  hand_eval_t h_eval2 = evaluate_hand(hand2);
+  if (h_eval1.ranking != h_eval2.ranking) {
+    return h_eval2.ranking - h_eval1.ranking;
+  }
+  else {
+    for (int c = 0; c < 5; c++) {
+      if (h_eval1.cards[c]->value != h_eval2.cards[c]->value) {
+	return h_eval1.cards[c]->value - h_eval2.cards[c]->value;
+      }
+    }
+    return 0;
+  }
 }
-
 
 
 //You will write this function in Course 4.
