@@ -69,24 +69,30 @@ ssize_t  find_secondary_pair(deck_t * hand,
   return -1;
 }
 
+int is_suit_valid(suit_t s, suit_t fs) {
+  if (s == fs || fs == NUM_SUITS) {
+    return 1;
+  }
+  return 0;
+}
 
 int is_straight_at_helper(deck_t * hand, size_t index, suit_t fs, int n) { //Finds n cards with decreasing value. I can use reccursion here
-  int count = 1;
-  card_t c1;
-  card_t c2;
-  for (int c = index; c < hand->n_cards - 1; c++) {
-    c1 = * hand->cards[c];
-    c2 = * hand->cards[c+1];
-    if (c1.value != c2.value) {
-      if ((fs == c1.suit && c1.suit == c2.suit) || fs == NUM_SUITS) {
-	if (c1.value - c2.value == 1) {
-	  count++;
-	}
-	else {
-	  return 0;
-	}
+  int count = 0;
+  size_t i = index;
+  int  r = hand->cards[i]->value;
+  if (!is_suit_valid(hand->cards[index]->suit, fs)) {
+    return 0;
+  }
+  while (count < n && i < hand->n_cards) {
+    if (r - hand->cards[i]->value < 2) {
+      if (is_suit_valid(hand->cards[i]->suit, fs)) {
+	r = hand->cards[i]->value;
+	count++;
       }
+      i++;
+      continue;
     }
+    break;
   }
   if (count >= n) {
     return 1;
