@@ -85,7 +85,7 @@ int is_straight_at_helper(deck_t * hand, size_t index, suit_t fs, int n) { //Fin
   }
   while (count < n && i < hand->n_cards) {
     if (r - hand->cards[i]->value < 2) {
-      if (is_suit_valid(hand->cards[i]->suit, fs)) {
+      if (is_suit_valid(hand->cards[i]->suit, fs) && (r - hand->cards[i]->value == 1 || i == index)) {
 	r = hand->cards[i]->value;
 	count++;
       }
