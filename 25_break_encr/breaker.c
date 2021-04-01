@@ -37,10 +37,10 @@ int maxIndex(int * array, int m, int n) {
 
 int main(int argc, char ** argv) {
   const int ALP = 26;
-  /*if (argc != 2) {
-    fprintf(stderr, "Usage: decrypt file not found\n");
+  if (argc != 2) {
+    fprintf(stderr, "Usage: decrypt file is not found\n");
     return EXIT_FAILURE;
-    }*/
+    }
   FILE * f = fopen(argv[1], "r");
   if (f == NULL) {
     fprintf(stderr, "Could not open file");
@@ -51,7 +51,7 @@ int main(int argc, char ** argv) {
   int key;
   key = maxIndex(chars, maxValue(chars, ALP), ALP);
   assert(key < 26 && key >= 0);
-  printf("%d\n", key);
+  printf("%d", key);
 
   if (fclose(f) != 0) {
     fprintf(stderr, "Failed to clode the input file!");
