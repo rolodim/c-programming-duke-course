@@ -1,7 +1,7 @@
-Grading at Thu Apr  1 21:11:26 UTC 2021
+Grading at Thu Apr  1 21:15:48 UTC 2021
 Attempting to compile breaker.c 
 gcc -o breaker -pedantic -std=gnu99 -Wall -Werror breaker.c
-valgrind reported memory errors
+testcase1 passed
 #################################################
 testcase2:
 testcase2 failed
