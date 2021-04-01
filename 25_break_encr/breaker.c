@@ -3,7 +3,7 @@
 #include <ctype.h>
 #include <assert.h>
 
-void counting(FILE * f, int * array) {
+void counting(FILE * f, unsigned * array) {
   int c;
   while ((c = fgetc(f)) != EOF) {
     if (isalpha(c)) {
@@ -15,7 +15,7 @@ void counting(FILE * f, int * array) {
   }
 }
 
-int maxValue(int * array, int n) {
+int maxValue(unsigned * array, unsigned n) {
   int max = array[0];
   for (int i = 0; i < n; i++) {
     if (array[i] > max) {
@@ -25,7 +25,7 @@ int maxValue(int * array, int n) {
   return max;
 }
 
-int maxIndex(int * array, int m, int n) {
+int maxIndex(unsigned * array, unsigned m, unsigned n) {
   for (int i = 0; i < n; i++) {
     if (array[i] == m) {
       return i;
@@ -46,17 +46,17 @@ int main(int argc, char ** argv) {
     fprintf(stderr, "Could not open file\n");
     return EXIT_FAILURE;
   }
-  int chars[26] = { 0 };
+  unsigned chars[26] = { 0 };
   counting(f, chars);
-  int key;
-  int maxCount = maxValue(chars, ALP);
+  unsigned key;
+  unsigned maxCount = maxValue(chars, ALP);
   if (!maxCount) {
     fprintf(stderr, "No characters in the file!\n");
     return EXIT_FAILURE;
   }
   key = maxIndex(chars, maxCount, ALP);
   assert(key < 26 && key >= 0);
-  printf("%d", key);
+  printf("%d\n", key);
 
   if (fclose(f) != 0) {
     fprintf(stderr, "Failed to clode the input file!\n");
