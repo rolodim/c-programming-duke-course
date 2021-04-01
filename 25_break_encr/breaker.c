@@ -37,10 +37,10 @@ int maxIndex(int * array, int m, int n) {
 
 int main(int argc, char ** argv) {
   const int ALP = 26;
-  if (argc != 2) {
+  /*if (argc != 2) {
     fprintf(stderr, "Usage: decrypt file not found\n");
     return EXIT_FAILURE;
-  }
+    }*/
   FILE * f = fopen(argv[1], "r");
   if (f == NULL) {
     fprintf(stderr, "Could not open file");
