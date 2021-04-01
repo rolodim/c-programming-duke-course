@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <ctype.h>
+#include <assert.h>
 
 void counting(FILE * f, int * array) {
   int c;
@@ -42,17 +43,18 @@ int main(int argc, char ** argv) {
   }
   FILE * f = fopen(argv[1], "r");
   if (f == NULL) {
-    perror("Could not open file");
+    fprintf(stderr, "Could not open file");
     return EXIT_FAILURE;
   }
   int chars[26] = { 0 };
   counting(f, chars);
   int key;
   key = maxIndex(chars, maxValue(chars, ALP), ALP);
+  assert(key < 26 && key >= 0);
   printf("%d\n", key);
 
   if (fclose(f) != 0) {
-    perror("Failed to clode the input file!");
+    fprintf(stderr, "Failed to clode the input file!");
     return EXIT_FAILURE;
   }
 
