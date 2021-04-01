@@ -51,7 +51,7 @@ int main(int argc, char ** argv) {
   int key;
   key = maxIndex(chars, maxValue(chars, ALP), ALP);
   assert(key < 26 && key >= 0);
-  printf("%d", key);
+  printf(key);
 
   if (fclose(f) != 0) {
     fprintf(stderr, "Failed to clode the input file!");
