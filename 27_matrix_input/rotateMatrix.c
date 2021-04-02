@@ -21,20 +21,23 @@ int main(int argc, char ** argv) {
 
   char matrix[SIZE][SIZE+2];
   char result[SIZE][SIZE];
-  int i = 0;
-  while (fgets(matrix[i], SIZE + 2, f) != NULL) {
-    if (((strchr(matrix[i], '\n') - matrix[i]) != matrix[i][SIZE])) {
-      fprintf(stderr, "Incorrect line in the input file - %d\n", i);
+  int r = 0;
+  while (fgets(matrix[r], SIZE + 2, f) != NULL) {
+    if (((strchr(matrix[r], '\n') - matrix[r]) != matrix[r][SIZE])) {
+      fprintf(stderr, "Incorrect line in the input file - %d\n", r);
       return EXIT_FAILURE;
     }
     //printf("Row %d \\n found in %d position.\n", i, (int)(strchr(matrix[i], '\n') - matrix[i]));
     for (int j = 0; j < SIZE; j++) {
-      result[i][j] = matrix[i][j];
+      result[r][j] = matrix[r][j];
     }
-    i++;
+    if (r == SIZE - 1) {
+      break;
+    }
+    r++;
   }
-  if (i != SIZE) {
-    fprintf(stderr, "Invalid input matrix. Number of the rows: %d\n", i);
+  if (r != SIZE - 1) {
+    fprintf(stderr, "Invalid input matrix. Number of the rows: %d\n", r);
     return EXIT_FAILURE;
   }
   rotate(result);
