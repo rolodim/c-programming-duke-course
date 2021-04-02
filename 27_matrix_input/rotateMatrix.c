@@ -22,11 +22,8 @@ int main(int argc, char ** argv) {
   char matrix[SIZE][SIZE+2];
   char result[SIZE][SIZE];
   int r = 0;
+  char c;
   while (fgets(matrix[r], SIZE + 2, f) != NULL) {
-    if (r >= SIZE) {
-      fprintf(stderr, "Long file!\n");
-      return EXIT_FAILURE;
-    }
     if (((strchr(matrix[r], '\n') - matrix[r]) != matrix[r][SIZE])) {
       fprintf(stderr, "Incorrect line in the input file - %d\n", r);
       return EXIT_FAILURE;
@@ -35,7 +32,7 @@ int main(int argc, char ** argv) {
     for (int j = 0; j < SIZE; j++) {
       result[r][j] = matrix[r][j];
     }
-    if ((r == SIZE - 1) && (!feof(f))) {
+    if ((r == SIZE - 1) && (c=fgetc(f) != EOF)) {
       fprintf(stderr, "Long file!\n");
       return EXIT_FAILURE;
     }
