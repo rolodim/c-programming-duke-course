@@ -56,6 +56,7 @@ int main(int argc, char ** argv) {
   }
   key = maxIndex(chars, maxCount, ALP);
   assert(key < 26 && key >= 0);
+  key = (22 + key) % 26;
   printf("%d\n", key);
 
   if (fclose(f) != 0) {
