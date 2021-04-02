@@ -33,6 +33,10 @@ int main(int argc, char ** argv) {
     }
     i++;
   }
+  if (i != SIZE) {
+    fprintf(stderr, "Invalid input matrix. Number of the rows: %d\n", i);
+    return EXIT_FAILURE;
+  }
   rotate(result);
   for (int i = 0; i < SIZE; i++) {
     for (int j = 0; j < SIZE; j++) {
