@@ -35,6 +35,10 @@ int main(int argc, char ** argv) {
     for (int j = 0; j < SIZE; j++) {
       result[r][j] = matrix[r][j];
     }
+    if ((r == SIZE - 1) && (!feof(f))) {
+      fprintf(stderr, "Long file!\n");
+      return EXIT_FAILURE;
+    }
     r++;
   }
   if (r != SIZE ) {
