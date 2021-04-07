@@ -20,9 +20,12 @@ counts_t * countFile(const char * filename, kvarray_t * kvPairs) {
     *nl = '\0';
     value = lookupValue(kvPairs, line);
     addCount(resultCounts, value);
-    line = NULL;
   }
-  
+  free(line);
+  if (fclose(f) != 0) {
+    fprintf(stderr, "Failed to close the input file!\n");
+    return NULL;
+  }
   return resultCounts;
 }
 
