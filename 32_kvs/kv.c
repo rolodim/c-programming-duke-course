@@ -18,6 +18,8 @@ kvarray_t * readKVs(const char * fname) {
     map->elements = realloc(map->elements, (i+1) * sizeof(map->elements));
     map->elements[i] = malloc(sizeof(*map->elements[i]));
     size_t index = strchr(line, '=') - line;
+    char * nl = strchr(line, '\n');
+    *nl = '\0';
     line[index] = '\0';
     map->elements[i]->key = line;
     map->elements[i]->value = &line[index+1];
