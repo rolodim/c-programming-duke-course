@@ -13,7 +13,9 @@ counts_t * createCounts(void) {
 int isInArray(counts_t * c, const char * name) {
   for (int i = 0; i < c->size; i++) {
     if (strcmp(c->counts[i]->string, name) == 0) {
-	return i;
+      c->counts[i]->string = name;
+      c->counts[i]->count++;
+      return i;
     }
   }
   return -1;
@@ -26,11 +28,7 @@ void addCount(counts_t * c, const char * name) {
   }
   else {
     int index = isInArray(c, name);
-    if (index >= 0) {
-      c->counts[index]->string = name;
-      c->counts[index]->count++;
-    }
-    else {
+    if (index < 0) {
       c->counts = realloc(c->counts, (c->size+1) * sizeof(*c->counts));
       c->counts[c->size] = malloc(sizeof(*c->counts[c->size]));
       c->counts[c->size]->string = name;
@@ -51,7 +49,6 @@ void printCounts(counts_t * c, FILE * outFile) {
 
 void freeCounts(counts_t * c) {
   for (size_t i = 0; i < c->size; i++) {
-    //free(c->counts[i]->string);
     free(c->counts[i]);
   }
   free(c->counts);
