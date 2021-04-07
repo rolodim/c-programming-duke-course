@@ -1,0 +1,15 @@
+Grading at Wed Apr  7 09:11:51 UTC 2021
+Attempting to compile:
+#################################################
+testcase1:
+Your output is incorrect
+#################################################
+testcase2:
+Your output is incorrect
+#################################################
+testcase3:
+Your output is correct
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
+
+Overall Grade: F
