@@ -36,7 +36,7 @@ char value_letter(card_t c) {
       case VALUE_QUEEN: charValue = 'Q'; break;
       case VALUE_KING: charValue = 'K'; break;
       case VALUE_ACE: charValue = 'A'; break;
-      default: charValue = 'e'; break;
+      default: charValue = '?'; break;
     }
   }
   return charValue;

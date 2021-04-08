@@ -48,8 +48,9 @@ void assert_full_deck(deck_t * d) {
 
 void add_card_to(deck_t * deck, card_t c) {
   deck->cards = realloc(deck->cards, (deck->n_cards+1) * sizeof(*deck->cards));
-  deck->cards[deck->n_cards] = malloc(sizeof(*deck->cards[deck->n_cards]));
-  deck->cards[deck->n_cards] = &c;
+  deck->cards[deck->n_cards] = malloc(sizeof(*deck->cards[deck->n_cards])); //change to correct type representation
+  deck->cards[deck->n_cards]->value = c.value;
+  deck->cards[deck->n_cards]->suit = c.suit;
   deck->n_cards++;
 }
 
@@ -64,7 +65,7 @@ card_t * add_empty_card(deck_t * deck) {
 deck_t * createEmptyDeck(void) {
   deck_t * d;
   d = malloc(sizeof(*d));
-  d->cards = malloc(sizeof(*d->cards));
+  d->cards = NULL;
   d->n_cards = 0;
   return d;
 }
