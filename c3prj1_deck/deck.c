@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <assert.h>
 #include "deck.h"
+#define FULL_DECK 52
+
 void print_hand(deck_t * hand){
   for (int i = 0; i < hand->n_cards; i++) {
     print_card(*(hand)->cards[i]);
@@ -42,4 +44,49 @@ void assert_full_deck(deck_t * d) {
     }
     assert(count == 1);
   }
+}
+
+void add_card_to_deck(deck_t * deck, card_t c) {
+  deck->cards = realloc(deck->cards, (deck->n_cards+1) * sizeof(*deck->cards));
+  deck->cards[deck->n_cards] = malloc(sizeof(*deck->cards[deck->n_cards]));
+  deck->cards[deck->n_cards] = &c;
+  deck->n_cards++;
+}
+
+card_t * add_empty_card(deck_t * deck) {
+  card_t c;
+  c.value = 0;
+  c.suit = 0;
+  add_card_to_deck(deck, c);
+  return deck->cards[deck->n_cards-1];
+}
+
+deck_t * createEmptyDeck(void) {
+  deck_t * d;
+  d = malloc(sizeof(*d));
+  d->cards = malloc(sizeof(*d->cards));
+  d->n_cards = 0;
+  return d;
+}
+
+deck_t * make_deck_exclude(deck_t * excluded_cards) {
+  deck_t * d = createEmptyDeck();
+  for (size_t i = 0; i < FULL_DECK; i++) {
+    card_t c = card_from_num(i);
+    if (!deck_contains(excluded_cards, c)) {
+      add_card_to_deck(d, c);
+    }
+  }
+  return d;
+}
+
+deck_t * buid_remaining_deck(deck_t ** hands, size_t n_hands) {
+  deck_t * hands_d = createEmptyDeck();
+  for (size_t i = 0; i < n_hands; i++) {
+    for (size_t j = 0; j < hands[i]->n_cards; j++) {
+      add_card_to_deck(hands_d, *hands[i]->cards[j]);
+    }
+  }
+  
+  return make_deck_exclude(hands_d);
 }
