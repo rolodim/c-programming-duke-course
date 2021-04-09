@@ -2,27 +2,28 @@
 #include <stdlib.h>
 #include <string.h>
 #include "input.h"
+#include <ctype.h>
 
 deck_t * createEmptyDeck(void);
 
 deck_t * hand_from_string(const char * str, future_cards_t * fc) {
   deck_t * d = createEmptyDeck();
   char c[2];
-  size_t j = 0;
   if (strlen(str) > 12) {
-    for (size_t i = 0; i <= strlen(str); i++) {
-      if (str[i] != ' ' && str[i] != '\0') {
-	c[j] = str[i];
-	j++;
+    for (size_t i = 0; i < strlen(str); i++) {
+      if (!isspace(str[i])) {
+	c[0] = str[i];
+	c[1] = str[i+1];
+	i++;
       }
       else {
-	j = 0;
-	if (c[0] == '?') {
-	  add_future_card(fc, c[1]-'0', add_empty_card(d));
-	}
-	else {
-	  add_card_to(d, card_from_letters(c[0], c[1]));
-	}
+	continue;
+      }
+      if (c[0] == '?') {
+	add_future_card(fc, c[1]-'0', add_empty_card(d));
+      }
+      else {
+	add_card_to(d, card_from_letters(c[0], c[1]));
       }
     }
   }
