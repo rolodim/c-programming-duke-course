@@ -12,10 +12,11 @@ int main(int argc, char ** argv) {
   size_t * n_hands = malloc(sizeof(*n_hands));
   deck_t ** hands = read_input(f, n_hands, fc);
 
-  print_hand(hands[0]);
+  //print_hand(hands[0]);
   printf("\n");
-  print_hand(hands[1]);
+  //print_hand(hands[1]);
   printf("\n");
+  free_deck(hands[0]);
   
   return EXIT_SUCCESS;
   

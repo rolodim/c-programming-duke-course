@@ -1,2 +1,2 @@
- As    Ks Qs ?0 ?1 Js
-2h 6h Qs ?0 ?1
+ As    Ks Qs ?0 ?5 Js
+2h 6h Qs ?1 ?2
