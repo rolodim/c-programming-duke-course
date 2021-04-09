@@ -35,10 +35,6 @@ int main(int argc, char ** argv) {
     numTrials = atoi(argv[2]);
   }
   FILE * f = fopen(argv[1], "r");
-  if (f == NULL) {
-    fprintf(stderr, "Input file is empty!\n");
-    return EXIT_FAILURE;
-  }
   future_cards_t * fc = malloc(sizeof(*fc));
   fc->n_decks = 0;
   fc->decks = NULL;
@@ -56,5 +52,21 @@ int main(int argc, char ** argv) {
     printf("Hand %zu won %zu / %zu times (%.2f%%)\n", i, table[i], numTrials, per);
   }
   printf("And there were %zu ties\n", table[*n_hands]);
+
+  for (size_t i = 0; i < *n_hands; i++) {
+    free_deck(hands[i]);
+  }
+  //for (size_t i = 0; i < fc->n_decks; i++) {
+  //  free_deck(&fc->decks[i]);
+  //}
+  free_deck(deck);
+  free(fc);
+  free(n_hands);
+  free(table);
+  
+  if (fclose(f) != 0) {
+    fprintf(stderr, "Failed to close the input file!\n");
+    return EXIT_FAILURE;
+  }
   return EXIT_SUCCESS;
 }
