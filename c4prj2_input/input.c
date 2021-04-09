@@ -53,12 +53,11 @@ deck_t ** read_input(FILE * f, size_t * n_hands, future_cards_t * fc) {
   size_t size;
   size_t d = 0;
   char * nl;
-  while (getline(&line, &size, f) >=0) {
+  while (getline(&line, &size, f) >= 0) {
     nl = strchr(line, '\n');
     *nl = '\0';
     hands = realloc(hands, (d+1) * sizeof(*hands)); 
     hands[d] = hand_from_string(line, fc);
-    line = NULL;
     d++;
   }
   free(line);
