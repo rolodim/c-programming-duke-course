@@ -19,7 +19,7 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc) {
   deck_t * d = createEmptyDeck();
   char c[4];
   size_t j = 0;
-  if (strlen(str) > 12) {
+  size_t cards = 0;
     for (size_t i = 0; i < strlen(str); i++) {
       if (!isspace(str[i])) {
 	c[j] = str[i];
@@ -33,10 +33,10 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc) {
 	  add_card_to(d, card_from_letters(c[0], c[1]));
 	}
 	j = 0;
+	cards++;
       }
     }
-  }
-  else {
+    if (cards < 5) {
     printf("Number of the cards in the hand is too small!\n");
     return NULL;
   }
