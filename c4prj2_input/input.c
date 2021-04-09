@@ -27,7 +27,6 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc) {
       }
       if (j > 1 && !isdigit(str[i+1])) {
 	if (c[0] == '?') {
-	  printf("Value = %c, Index = %ld\n", c[0], chars_to_int(c, j));
 	  add_future_card(fc, chars_to_int(c, j), add_empty_card(d));
 	}
 	else {
