@@ -54,11 +54,17 @@ int main(int argc, char ** argv) {
   printf("And there were %zu ties\n", table[*n_hands]);
 
   for (size_t i = 0; i < *n_hands; i++) {
-    free_deck(hands[i]);
+    for (size_t j = 0; j < hands[i]->n_cards; j++) {
+      free(hands[i]->cards[j]);
+    }
+    free(hands[i]->cards);
+    free(hands[i]);
   }
-  //for (size_t i = 0; i < fc->n_decks; i++) {
-  //  free_deck(&fc->decks[i]);
-  //}
+  free(hands);
+  for (size_t i = 0; i < fc->n_decks; i++) {
+    free(fc->decks[i].cards);
+  }
+  free(fc->decks);
   free_deck(deck);
   free(fc);
   free(n_hands);
