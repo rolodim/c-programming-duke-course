@@ -19,14 +19,15 @@ void add_future_card(future_cards_t * fc, size_t index, card_t * ptr) {
 
 void future_cards_from_deck(deck_t * deck, future_cards_t * fc) {
   size_t c = 0;
+  //printf("n_cards = %ld, n_decks = %ld\n",deck->n_cards, fc->n_decks);
    for (size_t i = 0; i < fc->n_decks; i++) {
-     if (deck->n_cards > c) {
+     if (deck->n_cards >= fc->n_decks) {
        if (fc->decks[i].n_cards > 0) {
 	for (size_t j = 0; j < fc->decks[i].n_cards; j++) {
 	  fc->decks[i].cards[j]->value = deck->cards[c]->value;
 	  fc->decks[i].cards[j]->suit = deck->cards[c]->suit;
-	  c++;
 	}
+	c++;
        }
      }
      else {
