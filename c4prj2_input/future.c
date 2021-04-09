@@ -19,7 +19,6 @@ void future_cards_from_deck(deck_t * deck, future_cards_t * fc) {
   size_t c = 0;
   if (deck->n_cards < fc->n_decks) {
     fprintf(stderr, "Too few cards in the deck!\n");
-    break;
   }
   else {
     for (size_t i = 0; i < fc->n_decks; i++) {
