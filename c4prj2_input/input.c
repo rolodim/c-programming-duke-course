@@ -6,24 +6,34 @@
 
 deck_t * createEmptyDeck(void);
 
+size_t chars_to_int(char * c, size_t j) {
+  if (j < 3) {
+    return c[1]-'0';
+  }
+  else {
+    return (c[1]-'0') * 10 + (c[2] - '0');
+  }
+}
+
 deck_t * hand_from_string(const char * str, future_cards_t * fc) {
   deck_t * d = createEmptyDeck();
-  char c[2];
+  char c[4];
+  size_t j = 0;
   if (strlen(str) > 12) {
     for (size_t i = 0; i < strlen(str); i++) {
       if (!isspace(str[i])) {
-	c[0] = str[i];
-	c[1] = str[i+1];
-	i++;
+	c[j] = str[i];
+	j++;
       }
-      else {
-	continue;
-      }
-      if (c[0] == '?') {
-	add_future_card(fc, c[1]-'0', add_empty_card(d));
-      }
-      else {
-	add_card_to(d, card_from_letters(c[0], c[1]));
+      if (j > 1 && !isdigit(str[i+1])) {
+	if (c[0] == '?') {
+	  printf("Value = %c, Index = %ld\n", c[0], chars_to_int(c, j));
+	  add_future_card(fc, chars_to_int(c, j), add_empty_card(d));
+	}
+	else {
+	  add_card_to(d, card_from_letters(c[0], c[1]));
+	}
+	j = 0;
       }
     }
   }
