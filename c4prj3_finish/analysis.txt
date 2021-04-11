@@ -1,0 +1,344 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  us/call  us/call  name    
+ 40.03      0.04     0.04   158504     0.25     0.25  flush_suit
+ 20.02      0.06     0.02   158277     0.13     0.13  find_secondary_pair
+ 10.01      0.07     0.01   483501     0.02     0.02  is_straight_at_helper
+ 10.01      0.08     0.01   117597     0.09     0.09  build_hand_from_match
+ 10.01      0.09     0.01    10000     1.00     1.00  shuffle
+ 10.01      0.10     0.01                             card_ptr_comp
+  0.00      0.10     0.00  1444330     0.00     0.00  is_suit_valid
+  0.00      0.10     0.00   929613     0.00     0.00  rec_match_counts
+  0.00      0.10     0.00   440307     0.00     0.02  is_straight_at
+  0.00      0.10     0.00   158504     0.00     0.51  evaluate_hand
+  0.00      0.10     0.00   158504     0.00     0.00  sortCardHand
+  0.00      0.10     0.00   158277     0.00     0.00  get_largest_element
+  0.00      0.10     0.00   158277     0.00     0.00  get_match_counts
+  0.00      0.10     0.00   158277     0.00     0.00  get_match_index
+  0.00      0.10     0.00   153937     0.00     0.07  find_straight
+  0.00      0.10     0.00    86057     0.00     0.03  is_ace_straight_at
+  0.00      0.10     0.00    79252     0.00     1.01  compare_hands
+  0.00      0.10     0.00    11822     0.00     0.00  copy_straight
+  0.00      0.10     0.00    10000     0.00     0.00  future_cards_from_deck
+  0.00      0.10     0.00    10000     0.00     8.01  which_hand_won
+  0.00      0.10     0.00      117     0.00     0.00  add_card_to
+  0.00      0.10     0.00       52     0.00     0.00  card_from_num
+  0.00      0.10     0.00       52     0.00     0.00  deck_contains
+  0.00      0.10     0.00       24     0.00     0.00  assert_card_valid
+  0.00      0.10     0.00       24     0.00     0.00  card_from_letters
+  0.00      0.10     0.00       24     0.00     0.00  suit_from_letter
+  0.00      0.10     0.00       24     0.00     0.00  value_from_letter
+  0.00      0.10     0.00       18     0.00     0.00  add_empty_card
+  0.00      0.10     0.00       18     0.00     0.00  add_future_card
+  0.00      0.10     0.00       18     0.00     0.00  chars_to_int
+  0.00      0.10     0.00        8     0.00     0.00  createEmptyDeck
+  0.00      0.10     0.00        6     0.00     0.00  hand_from_string
+  0.00      0.10     0.00        1     0.00     0.00  build_remaining_deck
+  0.00      0.10     0.00        1     0.00     0.00  free_deck
+  0.00      0.10     0.00        1     0.00     0.00  make_deck_exclude
+  0.00      0.10     0.00        1     0.00     0.00  read_input
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2015 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 9.99% of 0.10 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     90.0    0.00    0.09                 main [1]
+                0.00    0.08   10000/10000       which_hand_won [4]
+                0.01    0.00   10000/10000       shuffle [11]
+                0.00    0.00   10000/10000       future_cards_from_deck [21]
+                0.00    0.00       1/1           read_input [37]
+                0.00    0.00       1/1           build_remaining_deck [34]
+                0.00    0.00       1/1           free_deck [35]
+-----------------------------------------------
+                0.00    0.08  158504/158504      compare_hands [3]
+[2]     80.0    0.00    0.08  158504         evaluate_hand [2]
+                0.04    0.00  158504/158504      flush_suit [5]
+                0.02    0.00  158277/158277      find_secondary_pair [6]
+                0.00    0.01  153937/153937      find_straight [9]
+                0.01    0.00  117597/117597      build_hand_from_match [10]
+                0.00    0.00  158277/158277      get_match_counts [18]
+                0.00    0.00  158277/158277      get_largest_element [17]
+                0.00    0.00  158277/158277      get_match_index [19]
+-----------------------------------------------
+                0.00    0.08   79252/79252       which_hand_won [4]
+[3]     80.0    0.00    0.08   79252         compare_hands [3]
+                0.00    0.08  158504/158504      evaluate_hand [2]
+                0.00    0.00  158504/158504      sortCardHand [16]
+-----------------------------------------------
+                0.00    0.08   10000/10000       main [1]
+[4]     80.0    0.00    0.08   10000         which_hand_won [4]
+                0.00    0.08   79252/79252       compare_hands [3]
+-----------------------------------------------
+                0.04    0.00  158504/158504      evaluate_hand [2]
+[5]     40.0    0.04    0.00  158504         flush_suit [5]
+-----------------------------------------------
+                0.02    0.00  158277/158277      evaluate_hand [2]
+[6]     20.0    0.02    0.00  158277         find_secondary_pair [6]
+-----------------------------------------------
+                0.00    0.00  129251/483501      is_ace_straight_at [13]
+                0.01    0.00  354250/483501      is_straight_at [8]
+[7]     10.0    0.01    0.00  483501         is_straight_at_helper [7]
+                0.00    0.00 1444330/1444330     is_suit_valid [14]
+-----------------------------------------------
+                0.00    0.01  440307/440307      find_straight [9]
+[8]     10.0    0.00    0.01  440307         is_straight_at [8]
+                0.01    0.00  354250/483501      is_straight_at_helper [7]
+                0.00    0.00   86057/86057       is_ace_straight_at [13]
+-----------------------------------------------
+                0.00    0.01  153937/153937      evaluate_hand [2]
+[9]     10.0    0.00    0.01  153937         find_straight [9]
+                0.00    0.01  440307/440307      is_straight_at [8]
+                0.00    0.00   11822/11822       copy_straight [20]
+-----------------------------------------------
+                0.01    0.00  117597/117597      evaluate_hand [2]
+[10]    10.0    0.01    0.00  117597         build_hand_from_match [10]
+-----------------------------------------------
+                0.01    0.00   10000/10000       main [1]
+[11]    10.0    0.01    0.00   10000         shuffle [11]
+-----------------------------------------------
+                                                 <spontaneous>
+[12]    10.0    0.01    0.00                 card_ptr_comp [12]
+-----------------------------------------------
+                0.00    0.00   86057/86057       is_straight_at [8]
+[13]     2.7    0.00    0.00   86057         is_ace_straight_at [13]
+                0.00    0.00  129251/483501      is_straight_at_helper [7]
+-----------------------------------------------
+                0.00    0.00 1444330/1444330     is_straight_at_helper [7]
+[14]     0.0    0.00    0.00 1444330         is_suit_valid [14]
+-----------------------------------------------
+                              178326             rec_match_counts [15]
+                0.00    0.00  929613/929613      get_match_counts [18]
+[15]     0.0    0.00    0.00  929613+178326  rec_match_counts [15]
+                              178326             rec_match_counts [15]
+-----------------------------------------------
+                0.00    0.00  158504/158504      compare_hands [3]
+[16]     0.0    0.00    0.00  158504         sortCardHand [16]
+-----------------------------------------------
+                0.00    0.00  158277/158277      evaluate_hand [2]
+[17]     0.0    0.00    0.00  158277         get_largest_element [17]
+-----------------------------------------------
+                0.00    0.00  158277/158277      evaluate_hand [2]
+[18]     0.0    0.00    0.00  158277         get_match_counts [18]
+                0.00    0.00  929613/929613      rec_match_counts [15]
+-----------------------------------------------
+                0.00    0.00  158277/158277      evaluate_hand [2]
+[19]     0.0    0.00    0.00  158277         get_match_index [19]
+-----------------------------------------------
+                0.00    0.00   11822/11822       find_straight [9]
+[20]     0.0    0.00    0.00   11822         copy_straight [20]
+-----------------------------------------------
+                0.00    0.00   10000/10000       main [1]
+[21]     0.0    0.00    0.00   10000         future_cards_from_deck [21]
+-----------------------------------------------
+                0.00    0.00      18/117         add_empty_card [29]
+                0.00    0.00      24/117         hand_from_string [33]
+                0.00    0.00      33/117         make_deck_exclude [36]
+                0.00    0.00      42/117         build_remaining_deck [34]
+[22]     0.0    0.00    0.00     117         add_card_to [22]
+-----------------------------------------------
+                0.00    0.00      52/52          make_deck_exclude [36]
+[23]     0.0    0.00    0.00      52         card_from_num [23]
+-----------------------------------------------
+                0.00    0.00      52/52          make_deck_exclude [36]
+[24]     0.0    0.00    0.00      52         deck_contains [24]
+-----------------------------------------------
+                0.00    0.00      24/24          card_from_letters [26]
+[25]     0.0    0.00    0.00      24         assert_card_valid [25]
+-----------------------------------------------
+                0.00    0.00      24/24          hand_from_string [33]
+[26]     0.0    0.00    0.00      24         card_from_letters [26]
+                0.00    0.00      24/24          value_from_letter [28]
+                0.00    0.00      24/24          suit_from_letter [27]
+                0.00    0.00      24/24          assert_card_valid [25]
+-----------------------------------------------
+                0.00    0.00      24/24          card_from_letters [26]
+[27]     0.0    0.00    0.00      24         suit_from_letter [27]
+-----------------------------------------------
+                0.00    0.00      24/24          card_from_letters [26]
+[28]     0.0    0.00    0.00      24         value_from_letter [28]
+-----------------------------------------------
+                0.00    0.00      18/18          hand_from_string [33]
+[29]     0.0    0.00    0.00      18         add_empty_card [29]
+                0.00    0.00      18/117         add_card_to [22]
+-----------------------------------------------
+                0.00    0.00      18/18          hand_from_string [33]
+[30]     0.0    0.00    0.00      18         add_future_card [30]
+-----------------------------------------------
+                0.00    0.00      18/18          hand_from_string [33]
+[31]     0.0    0.00    0.00      18         chars_to_int [31]
+-----------------------------------------------
+                0.00    0.00       1/8           make_deck_exclude [36]
+                0.00    0.00       1/8           build_remaining_deck [34]
+                0.00    0.00       6/8           hand_from_string [33]
+[32]     0.0    0.00    0.00       8         createEmptyDeck [32]
+-----------------------------------------------
+                0.00    0.00       6/6           read_input [37]
+[33]     0.0    0.00    0.00       6         hand_from_string [33]
+                0.00    0.00      24/24          card_from_letters [26]
+                0.00    0.00      24/117         add_card_to [22]
+                0.00    0.00      18/18          add_empty_card [29]
+                0.00    0.00      18/18          chars_to_int [31]
+                0.00    0.00      18/18          add_future_card [30]
+                0.00    0.00       6/8           createEmptyDeck [32]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[34]     0.0    0.00    0.00       1         build_remaining_deck [34]
+                0.00    0.00      42/117         add_card_to [22]
+                0.00    0.00       1/8           createEmptyDeck [32]
+                0.00    0.00       1/1           make_deck_exclude [36]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[35]     0.0    0.00    0.00       1         free_deck [35]
+-----------------------------------------------
+                0.00    0.00       1/1           build_remaining_deck [34]
+[36]     0.0    0.00    0.00       1         make_deck_exclude [36]
+                0.00    0.00      52/52          card_from_num [23]
+                0.00    0.00      52/52          deck_contains [24]
+                0.00    0.00      33/117         add_card_to [22]
+                0.00    0.00       1/8           createEmptyDeck [32]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[37]     0.0    0.00    0.00       1         read_input [37]
+                0.00    0.00       6/6           hand_from_string [33]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2015 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [22] add_card_to            [32] createEmptyDeck        [13] is_ace_straight_at
+  [29] add_empty_card         [24] deck_contains           [8] is_straight_at
+  [30] add_future_card         [2] evaluate_hand           [7] is_straight_at_helper
+  [25] assert_card_valid       [6] find_secondary_pair    [14] is_suit_valid
+  [10] build_hand_from_match   [9] find_straight          [36] make_deck_exclude
+  [34] build_remaining_deck    [5] flush_suit             [37] read_input
+  [26] card_from_letters      [35] free_deck              [15] rec_match_counts
+  [23] card_from_num          [21] future_cards_from_deck [11] shuffle
+  [12] card_ptr_comp          [17] get_largest_element    [16] sortCardHand
+  [31] chars_to_int           [18] get_match_counts       [27] suit_from_letter
+   [3] compare_hands          [19] get_match_index        [28] value_from_letter
+  [20] copy_straight          [33] hand_from_string        [4] which_hand_won
