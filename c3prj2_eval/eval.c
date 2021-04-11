@@ -170,6 +170,16 @@ int compare_hands(deck_t * hand1, deck_t * hand2) {
   }
 }
 
+size_t rec_match_counts(deck_t * hand, unsigned * arr, size_t index, size_t count) {
+  if (index < hand->n_cards - 1) {
+    if (hand->cards[index]->value == hand->cards[index+1]->value && index < hand->n_cards - 1) {
+      count++;
+      count = rec_match_counts(hand, arr, index + 1, count);
+    }
+  }
+  arr[index] = count;
+  return count;
+}
 
 //You will write this function in Course 4.
 //For now, we leave a prototype (and provide our
@@ -178,14 +188,20 @@ int compare_hands(deck_t * hand1, deck_t * hand2) {
 //use of get_match_counts.
 unsigned * get_match_counts(deck_t * hand) {
   unsigned * arr = calloc(hand->n_cards,  sizeof(*arr));
-  for (size_t i = 0; i < hand->n_cards; i++) {
-    for (size_t j = 0; j < hand->n_cards; j++) {
-      if (hand->cards[j]->value == hand->cards[i]->value) {
-	arr[i]++;
-      }
-    }
+  size_t i = 0;
+  while (i < hand->n_cards) {
+    size_t count = 1;
+    i += rec_match_counts(hand, arr, i, count);
   }
+  //for (size_t i = 0; i < hand->n_cards; i++) {
+  //  for (size_t j = 0; j < hand->n_cards; j++) {
+  //    if (hand->cards[j]->value == hand->cards[i]->value) {
+  //	arr[i]++;
+  //      }
+  //    }
+  // }
   return arr;
+  
 }
 
 // We provide the below functions.  You do NOT need to modify them
