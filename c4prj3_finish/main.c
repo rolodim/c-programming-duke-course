@@ -64,11 +64,13 @@ int main(int argc, char ** argv) {
   for (size_t i = 0; i < fc->n_decks; i++) {
     free(fc->decks[i].cards);
   }
+  
   free(fc->decks);
   free_deck(deck);
   free(fc);
   free(n_hands);
   free(table);
+
   
   if (fclose(f) != 0) {
     fprintf(stderr, "Failed to close the input file!\n");
