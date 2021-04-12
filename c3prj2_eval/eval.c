@@ -188,18 +188,18 @@ size_t rec_match_counts(deck_t * hand, unsigned * arr, size_t index, size_t coun
 //use of get_match_counts.
 unsigned * get_match_counts(deck_t * hand) {
   unsigned * arr = calloc(hand->n_cards,  sizeof(*arr));
-  size_t i = 0;
+  /*size_t i = 0;
   while (i < hand->n_cards) {
     size_t count = 1;
     i += rec_match_counts(hand, arr, i, count);
-  }
-  //for (size_t i = 0; i < hand->n_cards; i++) {
-  //  for (size_t j = 0; j < hand->n_cards; j++) {
-  //    if (hand->cards[j]->value == hand->cards[i]->value) {
-  //	arr[i]++;
-  //      }
-  //    }
-  // }
+    }*/
+  for (size_t i = 0; i < hand->n_cards; i++) {
+    for (size_t j = 0; j < hand->n_cards; j++) {
+     if (hand->cards[j]->value == hand->cards[i]->value) {
+  	arr[i]++;
+        }
+      }
+      }
   return arr;
   
 }
