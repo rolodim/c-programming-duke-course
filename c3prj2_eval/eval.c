@@ -26,13 +26,9 @@ int card_ptr_comp(const void * vp1, const void * vp2) {
 suit_t flush_suit(deck_t * hand) {
   size_t tableSuit[4][2] = {{SPADES , 0}, {HEARTS, 0}, {DIAMONDS, 0}, {CLUBS, 0}};
   for (int c = 0; c < hand->n_cards; c++) {
-    for (int s = 0; s < NUM_SUITS; s++) {
-      if (hand->cards[c]->suit == tableSuit[s][0]) {
-	tableSuit[s][1]++;
-	if (tableSuit[s][1] == 5) {
-	  return tableSuit[s][0];
-	}
-      }
+    tableSuit[hand->cards[c]->suit][1]++;
+    if (tableSuit[hand->cards[c]->suit][1] == 5) {
+      return tableSuit[hand->cards[c]->suit][0];
     }
   }
   return NUM_SUITS;
@@ -76,11 +72,12 @@ int is_suit_valid(suit_t s, suit_t fs) {
   return 0;
 }
 
+
 int is_straight_at_helper(deck_t * hand, size_t index, suit_t fs, int n) { //Finds n cards with decreasing value. I can use reccursion here
   int count = 0;
   size_t i = index;
   int  r = hand->cards[i]->value;
-  if (!is_suit_valid(hand->cards[index]->suit, fs)) {
+  if (hand->cards[index]->suit != fs && fs != NUM_SUITS) {
     return 0;
   }
   while (count < n && i < hand->n_cards) {
@@ -105,7 +102,7 @@ int is_ace_straight_at(deck_t * hand, size_t index, suit_t fs) { // Finds either
     int n = 4;
     for (int j = index; j < hand->n_cards; j++) {
       if (hand->cards[j]-> value == 5) {
-	if (fs == hand->cards[index]->suit || fs == NUM_SUITS) {
+	if (hand->cards[index]->suit == fs || fs == NUM_SUITS) {
 	 return is_straight_at_helper(hand, j, fs, n) * -1;
 	}
       }
@@ -188,18 +185,18 @@ size_t rec_match_counts(deck_t * hand, unsigned * arr, size_t index, size_t coun
 //use of get_match_counts.
 unsigned * get_match_counts(deck_t * hand) {
   unsigned * arr = calloc(hand->n_cards,  sizeof(*arr));
-  /*size_t i = 0;
+  size_t i = 0;
   while (i < hand->n_cards) {
     size_t count = 1;
     i += rec_match_counts(hand, arr, i, count);
-    }*/
-  for (size_t i = 0; i < hand->n_cards; i++) {
+    }
+  /*for (size_t i = 0; i < hand->n_cards; i++) {
     for (size_t j = 0; j < hand->n_cards; j++) {
      if (hand->cards[j]->value == hand->cards[i]->value) {
   	arr[i]++;
         }
       }
-      }
+      }*/
   return arr;
   
 }
