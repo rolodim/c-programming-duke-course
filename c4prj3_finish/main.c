@@ -43,7 +43,7 @@ int main(int argc, char ** argv) {
   deck_t * deck = build_remaining_deck(hands, *n_hands);
   size_t * table = calloc(*n_hands + 1, sizeof(*table));
   for (size_t i = 0; i < numTrials; i++) {
-    shuffle(deck);
+    if (i % 10 == 0) shuffle(deck);
     future_cards_from_deck(deck, fc);
     table[which_hand_won(hands, n_hands)]++;
   }
