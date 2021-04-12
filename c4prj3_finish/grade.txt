@@ -1,4 +1,4 @@
-Grading at Mon Apr 12 08:58:53 UTC 2021
+Grading at Mon Apr 12 09:01:45 UTC 2021
 Running 'make clean' to do a clean build of your project
 rm -rf *.o poker *~
 Running 'make poker OTHERFLAGS=-O3' to build your project
@@ -20,20 +20,20 @@ Running a simulation with 25000 draws for 3 hands...
     Hand 2 was close enough to our answer
     Test case passed!    
 Running a simulation with 25000 draws for 3 hands...
-    Hand 0 was close enough to our answer
+ ** Hand 0 differed from our answer by 1.77%
     Hand 1 was close enough to our answer
     Hand 2 was close enough to our answer
-    Test case passed!    
+*** Test case failed ***
 Running a simulation with 25000 draws for 2 hands...
     Hand 0 was close enough to our answer
     Hand 1 was close enough to our answer
     Test case passed!    
 Running a simulation with 80000 draws for 4 hands...
     Hand 0 was close enough to our answer
-    Hand 1 was close enough to our answer
+ ** Hand 1 differed from our answer by 1.67%
     Hand 2 was close enough to our answer
     Hand 3 was close enough to our answer
-    Test case passed!    
+*** Test case failed ***
 Running a simulation with 30000 draws for 2 hands...
     Hand 0 was close enough to our answer
     Hand 1 was close enough to our answer
@@ -51,11 +51,11 @@ Running a simulation with 40000 draws for 3 hands...
  - Then one from a completely made up poker variant
 Running a simulation with 100000 draws for 6 hands...
 Valgrind reported errors:
-==4821== Memcheck, a memory error detector
-==4821== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
-==4821== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
-==4821== Command: ./poker whacky.txt 100000
-==4821== Parent PID: 4820
-==4821== 
+==5497== Memcheck, a memory error detector
+==5497== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==5497== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==5497== Command: ./poker whacky.txt 100000
+==5497== Parent PID: 5496
+==5497== 
 
-Overall Grade: B
+Overall Grade: F
