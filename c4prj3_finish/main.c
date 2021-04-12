@@ -43,7 +43,7 @@ int main(int argc, char ** argv) {
   deck_t * deck = build_remaining_deck(hands, *n_hands);
   size_t * table = calloc(*n_hands + 1, sizeof(*table));
   for (size_t i = 0; i < numTrials; i++) {
-    if (i % 1000 == 0) shuffle(deck);
+    if (i % 3 == 0) shuffle(deck);
     future_cards_from_deck(deck, fc);
     table[which_hand_won(hands, n_hands)]++;
   }
@@ -53,7 +53,7 @@ int main(int argc, char ** argv) {
   }
   printf("And there were %zu ties\n", table[*n_hands]);
 
-  /*for (size_t i = 0; i < *n_hands; i++) {
+  for (size_t i = 0; i < *n_hands; i++) {
     for (size_t j = 0; j < hands[i]->n_cards; j++) {
       free(hands[i]->cards[j]);
     }
@@ -70,7 +70,7 @@ int main(int argc, char ** argv) {
   free(fc);
   free(n_hands);
   free(table);
-  */
+  
   
   if (fclose(f) != 0) {
     fprintf(stderr, "Failed to close the input file!\n");
